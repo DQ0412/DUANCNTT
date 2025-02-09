@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  paginationProduct,
-} from "../../../../actions/ProductAction";
+import { paginationProduct } from "../../../../actions/ProductAction";
 import { Link } from "react-router-dom";
 import ListProduct from "./ListProduct";
 import "./AdminProduct.css";
@@ -10,11 +8,17 @@ import { AppstoreAddOutlined, ToolOutlined } from "@ant-design/icons";
 
 function AdminProduct(props) {
   const dispatch = useDispatch();
-  const currentPage = useSelector((state) => state.allProduct.currentPage);
-  const { products } = useSelector((state) => state.allProduct.product);
+
+  // Lấy currentPage từ Redux (đảm bảo không undefined)
+  const currentPage = useSelector((state) => state.allProduct.currentPage) || 1;
+
+  // Kiểm tra `product` có phải là mảng không, nếu không gán giá trị mặc định là []
+  const products = useSelector((state) => state.allProduct.product) || [];
 
   useEffect(() => {
-    dispatch(paginationProduct(currentPage));
+    if (currentPage !== undefined) {
+      dispatch(paginationProduct(currentPage));
+    }
   }, [dispatch, currentPage]);
 
   return (
@@ -24,14 +28,15 @@ function AdminProduct(props) {
           <AppstoreAddOutlined />
         </Link>
         <Link to="/admin/product/update/info" className="add-product">
-          <ToolOutlined></ToolOutlined>
+          <ToolOutlined />
         </Link>
       </div>
 
-      {products ? (
-        <ListProduct listProducts={products}></ListProduct>
+      {/* Kiểm tra sản phẩm có tồn tại trước khi render */}
+      {products.length > 0 ? (
+        <ListProduct listProducts={products} />
       ) : (
-        "Loading"
+        <p>Không có sản phẩm</p>
       )}
     </div>
   );

@@ -1,160 +1,89 @@
 const initialState = {
-    product:[],
-    currentPage: 1
-}
+    productList: [], 
+    currentPage: 1,
+    error: null
+};
 
 export const getAllProductReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_ALL_PRODUCT':
-            return {...state, product: action.payload}
+            console.log("Redux nhận danh sách sản phẩm:", action.payload); // 🔥 Debug API Response
+            return { ...state, productList: action.payload };
 
         case 'GET_ALL_PRODUCT_FAIL':
-            return {...state, error: action.payload}
+            return { ...state, error: action.payload };
 
-        case 'ASCENDING_PRODUCT':{
-            let newList = [...state.product]
-            newList = newList.sort((a,b) => b.salePrice - a.salePrice)
-            return {...state, product: newList}
-        }
-
-        case 'DESCENDING_PRODUCT':{
-            let newList = [...state.product]
-            newList = newList.sort((a,b) => a.salePrice - b.salePrice)
-            return {...state, product: newList}
+        case 'ASCENDING_PRODUCT': {
+            let sortedList = [...state.productList].sort((a, b) => b.sale_price - a.sale_price);
+            return { ...state, productList: sortedList };
         }
 
-        case 'FILTER_PRODUCT':{
-            let newList = [...state.product]
-            newList = newList.filter(item => item.type === action.payload)
-            return {...state, product: newList}
+        case 'DESCENDING_PRODUCT': {
+            let sortedList = [...state.productList].sort((a, b) => a.sale_price - b.sale_price);
+            return { ...state, productList: sortedList };
         }
 
-        case 'FILTER_PRODUCT_BY_PRICE':{
-            let newList = [...state.product]
-            newList = newList.filter(item => item.salePrice >= action.payload.startPrice && item.salePrice <= action.payload.endPrice)
-            return {...state, product: newList}
-        }
-        
-        case 'FILTER_PRODUCT_BY_RANDOM_FIELD':{
-            return {...state, product: action.payload}
-            // let newList = [...state.product]
-            // for(var key in action.payload) {
-            //     var value = action.payload[key];
-
-            //     newList = newList.filter(item => item[key] === value)
-            // }
-            
-            // return {...state, product: newList}
+        case 'FILTER_PRODUCT': {
+            let filteredList = state.productList.filter(item => item.type === action.payload);
+            return { ...state, productList: filteredList };
         }
 
-        case 'SAVE_PRODUCT':{
-            return {...state, product: action.payload}
+        case 'FILTER_PRODUCT_BY_PRICE': {
+            let filteredList = state.productList.filter(item => 
+                item.sale_price >= action.payload.startPrice && item.sale_price <= action.payload.endPrice
+            );
+            return { ...state, productList: filteredList };
         }
 
-        case 'SAVE_PRODUCT_FAIL':{
-            return {...state, error: action.payload}
+        case 'SAVE_PRODUCT':
+            return { ...state, productList: [...state.productList, action.payload] };
+
+        case 'DELETE_PRODUCT': {
+            const updatedList = state.productList.filter(item => item.id !== action.payload);
+            return { ...state, productList: updatedList };
         }
 
-        case 'DELETE_PRODUCT':{
-            return {...state, product: action.payload}
-        }
-            
-        case 'DELETE_PRODUCT_FAIL':{
-            return {...state, error: action.payload}
-        }
+        case 'EDIT_CURRENT_PAGE':
+            return { ...state, currentPage: action.payload };
 
-        case 'EDIT_CURRENT_PAGE':{
-            return {...state, currentPage: action.payload}
-        }
-        
         case 'PAGINATION_PRODUCT':
-            return {...state, product: action.payload}
+            return { ...state, productList: action.payload };
 
         default:
-            return state
-           
+            return state;
     }
-}
+};
+const initialProductState = {
+    product: null,
+    error: null
+};
 
-// export const paginationProductReducer = (state = {}, action) => {
-//     switch (action.type) {
-//         case 'PAGINATION_PRODUCT':
-//             return {...state, product: action.payload}
-            
-    
-//         default:
-//             return state
-           
-//     }
-// }
-
-export const getProductByIdReducer = (state = {}, action) => {
+export const getProductByIdReducer = (state = initialProductState, action) => {
     switch (action.type) {
-        case 'GET_PRODUCT_BY_ID':{
-            return {...state, product: action.payload}
-        }
+        case 'GET_PRODUCT_BY_ID':
+            return { ...state, product: action.payload };
 
-        case 'REMOVE_PRODUCT_BY_ID':{
-            return {}
-        }
+        case 'REMOVE_PRODUCT_BY_ID':
+            return { ...state, product: null };
 
-        case 'REVIEW_PRODUCT':{
-            return {...state, product: action.payload}
-        }
-
-        case 'REVIEW_PRODUCT_FAIL':{
-            return {...state, error: action.payload}
-        }
-
-        case 'COMMENT_PRODUCT':{
-            return {...state, product: action.payload}
-        }
-
-        case 'COMMENT_PRODUCT_FAIL':{
-            return {...state, error: action.payload}
-        }
-
-        case 'REP_COMMENT_PRODUCT':{
-            return {...state, product: action.payload}
-        }
-
-        case 'REP_COMMENT_PRODUCT_FAIL':{
-            return {...state, error: action.payload}
-        }
-
-        case 'PIN_COMMENT_PRODUCT':{
-            return {...state, product: action.payload}
-        }
-
-        case 'PIN_COMMENT_PRODUCT_FAIL':{
-            return {...state, error: action.payload}
-        }
-
-        case 'BLOG_PRODUCT':{
-            return {...state, product: action.payload}
-        }
-
-        case 'BLOG_PRODUCT_FAIL':{
-            return {...state, error: action.payload}
-        }
-
-    
-        default: return state
+        default:
+            return state;
     }
-}
+};
 
-export const searchProductReducer = (state = {}, action) => {
+const initialSearchState = {
+    searchResults: [],
+    error: null
+};
+export const searchProductReducer = (state = initialSearchState, action) => {
     switch (action.type) {
-        case 'SEARCH_PRODUCT':{
-            return {...state, products: action.payload}
-        }
+        case 'SEARCH_PRODUCT':
+            return { ...state, searchResults: action.payload };
 
-        case 'SEARCH_PRODUCT_FAIL':{
-            return {...state, error: action.payload}
-        }
-    
-        default: return state
+        case 'SEARCH_PRODUCT_FAIL':
+            return { ...state, error: action.payload };
+
+        default:
+            return state;
     }
-}
-
-
+};

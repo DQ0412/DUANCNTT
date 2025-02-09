@@ -1,7 +1,8 @@
 import React from 'react';
 
+function AboutProduct({ product }) {
+    if (!product) return <p>Không có thông tin sản phẩm</p>;
 
-function AboutProduct(props) {
     return (
         <div className="detail-intro">
             <div className="detail-intro-title">
@@ -10,36 +11,32 @@ function AboutProduct(props) {
             <table className="detail-intro-tskt">
                 <tbody>
                     <tr>
-                        <td> Kích thước màn hình </td>
-                        <td> 6.1 inches </td>
+                        <td>Kích thước màn hình</td>
+                        <td>{product.screen || "Chưa có dữ liệu"}</td>
                     </tr>
                     <tr>
-                        <td> Công nghệ màn hình </td>
-                        <td> OLED </td>
+                        <td>Công nghệ màn hình</td>
+                        <td>{product.technology || "Chưa có dữ liệu"}</td>
                     </tr>
                     <tr>
-                        <td> Camera sau </td>
-                        <td> 12 MP, f/1.6, 26mm (wide), 1.4µm, dual pixel PDAF, OIS </td>
+                        <td>Camera sau</td>
+                        <td>{product.camera || "Chưa có dữ liệu"}</td>
                     </tr>
                     <tr>
-                        <td>Camera trước </td>
-                        <td> 12 MP, f/2.2, 23mm (wide), 1/3.6" </td>
+                        <td>Chipset</td>
+                        <td>{product.chipset || "Chưa có dữ liệu"}</td>
                     </tr>
                     <tr>
-                        <td> Chipset </td>
-                        <td> Apple A14 Bionic (5 nm) </td>
+                        <td>Dung lượng RAM</td>
+                        <td>{product.ram || "Chưa có dữ liệu"}</td>
                     </tr>
                     <tr>
-                        <td> Dung lượng RAM </td>
-                        <td> 4 GB </td>
+                        <td>Bộ nhớ trong</td>
+                        <td>{product.rom || "Chưa có dữ liệu"}</td>
                     </tr>
                     <tr>
-                        <td> Bộ nhớ trong </td>
-                        <td> 64 GB </td>
-                    </tr>
-                    <tr>
-                        <td> Pin </td>
-                        <td> Li-Ion, sạc nhanh 20W, sạc không dây 15W, USB Power Delivery 2.0 </td>
+                        <td>Pin</td>
+                        <td>{product.battery || "Chưa có dữ liệu"}</td>
                     </tr>
                 </tbody>
             </table>

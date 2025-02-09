@@ -1,17 +1,20 @@
 import React from 'react';
-import Product from './Product'
-
+import Product from './Product';
 
 function ListProduct(props) {
-    const {HotSaleProducts} = props;
+    const { HotSaleProducts } = props;
+
+    console.log("Danh sách sản phẩm nhận được:", HotSaleProducts); // 🔥 Kiểm tra dữ liệu trong Component
 
     return (
         <div className="hotsale-listproduct">
-            {
-                HotSaleProducts.map((product, index) => (
-                    <Product product={product} key={index}></Product>
+            {HotSaleProducts && HotSaleProducts.length > 0 ? (
+                HotSaleProducts.map((product) => (
+                    <Product product={product} key={product.id}></Product>
                 ))
-            }
+            ) : (
+                <p>Không có sản phẩm nào!</p>
+            )}
         </div>
     );
 }

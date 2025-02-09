@@ -1,13 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  DeleteProduct,
+  deleteProduct,
   paginationProduct,
 } from "../../../../actions/ProductAction";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { formatPrice } from "../../../../untils/index";
 import { DeleteOutlined, EditOutlined, FormOutlined } from "@ant-design/icons";
-
 
 function Product(props) {
   const { product, number } = props;
@@ -15,7 +14,7 @@ function Product(props) {
   const currentPage = useSelector((state) => state.allProduct.currentPage);
 
   const handleDeleteProduct = async (product) => {
-    await dispatch(DeleteProduct(product._id));
+    await dispatch(deleteProduct(product.id));  // 🔹 Đổi `_id` thành `id`
     dispatch(paginationProduct(currentPage));
   };
 
@@ -23,25 +22,25 @@ function Product(props) {
     <tr>
       <td>{number + 1}</td>
       <td>
-        <img src={product.image}></img>
+        <img src={`http://127.0.0.1:8000/storage/${product.image}`} alt={product.name} width="80px"></img>
       </td>
       <td>{product.name}</td>
-      <td>{formatPrice(product.salePrice)}</td>
+      <td>{formatPrice(product.sale_price)}</td>  {/* 🔹 Đổi `salePrice` thành `sale_price` */}
       <td>{product.type}</td>
       <td
         className="delete-product"
-        onClick={(e) => handleDeleteProduct(product)}
+        onClick={() => handleDeleteProduct(product)}
       >
         <DeleteOutlined />
       </td>
       <td className="update-product">
-        <Link to={`/admin/product/update/${product._id}`}>
-          <EditOutlined></EditOutlined>
+        <Link to={`/admin/product/update/${product.id}`}> {/* 🔹 Đổi `_id` thành `id` */}
+          <EditOutlined />
         </Link>
       </td>
       <td className="review-product">
-        <Link to={`/admin/product/reviewProduct/${product._id}`} >
-          <FormOutlined></FormOutlined>
+        <Link to={`/admin/product/reviewProduct/${product.id}`}>
+          <FormOutlined />
         </Link>
       </td>
     </tr>
