@@ -1,0 +1,20 @@
+const initialState = {
+    province: [],
+    district: [],
+    ward: [],
+};
+
+const addressReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case "GET_ALL_PROVINCE":
+            return { ...state, province: action.payload };
+        case "GET_ALL_DISTRICT":
+            return { ...state, district: action.payload };
+        case "GET_ALL_WARD":
+            return { ...state, ward: action.payload };
+        default:
+            return state;
+    }
+};
+
+export default addressReducer;
