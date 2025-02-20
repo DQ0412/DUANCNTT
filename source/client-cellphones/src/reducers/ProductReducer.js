@@ -1,7 +1,9 @@
 const initialState = {
     productList: [], 
     currentPage: 1,
-    error: null
+    error: null,
+    products: [],  // This should contain all your products
+  filteredProducts: [], 
 };
 export const getProductByTypeReducer = (state = { products: [] }, action) => {
     switch (action.type) {
@@ -14,7 +16,32 @@ export const getProductByTypeReducer = (state = { products: [] }, action) => {
     }
 };
 
-
+export const productReducer = (state = initialState, action) => {
+    switch (action.type) {
+      case 'FILTER_BY_PRICE':
+        const { startPrice, endPrice } = action.payload;
+        const filteredByPrice = state.products.filter(
+          (product) => product.price >= startPrice && product.price <= endPrice
+        );
+        return {
+          ...state,
+          filteredProducts: filteredByPrice,
+        };
+  
+      case 'FILTER_BY_TYPE':
+        const type = action.payload;
+        const filteredByType = state.products.filter(
+          (product) => product.type === type  // Assuming your products have a 'type' property
+        );
+        return {
+          ...state,
+          filteredProducts: filteredByType,
+        };
+  
+      default:
+        return state;
+    }
+  };
 
 
 export const getAllTypeProductReducer = (state = { types: [] }, action) => {

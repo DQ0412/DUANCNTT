@@ -7,7 +7,8 @@ import { UserSigninReducer, UserSignupReducer, getAllUserReducer } from "./reduc
 import { getAllProductReducer, getProductByIdReducer, searchProductReducer } from "./reducers/ProductReducer";
 import { getAllTypeProductReducer } from "./reducers/ListTypeProductReducer";
 import { fetchCart } from "./actions/CartAction";
-
+import { addressReducer } from "./reducers/OrderReducer";
+import { getAllOrderReducer } from "./reducers/OrderReducer";
 const reducer = combineReducers({
     userSignin: UserSigninReducer,
     userSignup: UserSignupReducer,
@@ -17,6 +18,8 @@ const reducer = combineReducers({
     searchProduct: searchProductReducer,
     allTypeProduct: getAllTypeProductReducer,
     cart: CartReducer,
+    address: addressReducer,  
+    orders: getAllOrderReducer
 });
 
 

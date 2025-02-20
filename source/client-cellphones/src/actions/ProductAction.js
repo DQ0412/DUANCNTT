@@ -271,4 +271,13 @@ export const pinCommentProduct = (id, comment) => async (dispatch, getState) => 
 export const removeProductById = () => (dispatch) => {
   dispatch({ type: "REMOVE_PRODUCT_BY_ID" });
 };
+// In actions/ProductAction.js
+
+
+export const filterProductByType = (type) => {
+  return {
+    type: 'FILTER_BY_TYPE',
+    payload: type,
+  };
+};
 

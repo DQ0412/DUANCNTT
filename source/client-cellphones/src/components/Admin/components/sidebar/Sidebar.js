@@ -25,7 +25,10 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar-top">
-        <img src="https://raw.githubusercontent.com/trananhtuat/tua-react-admin/main/src/assets/images/logo.png" alt="Logo" />
+      <div className="dashboard-top-content-avatar">
+  <span style={{ fontSize: '20px', fontWeight: '700', color: '#d70018' }}>POS</span>
+</div>
+
       </div>
       <div className="sidebar-list">
         <Link to="/admin" className="sidebar-list-item">

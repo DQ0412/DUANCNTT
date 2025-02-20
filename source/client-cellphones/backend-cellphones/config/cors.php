@@ -29,7 +29,7 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
     'paths' => ['api/*'],  // Cấu hình các route API để hỗ trợ CORS
     'allowed_methods' => ['*'],

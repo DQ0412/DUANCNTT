@@ -1,3 +1,32 @@
+const initialState = {
+  province: [],
+  district: [],
+  ward: [],
+};
+
+
+export const addressReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "GET_ALL_PROVINCE":
+      console.log("✅ Redux nhận danh sách tỉnh/thành:", action.payload);
+      return { ...state, province: action.payload };
+    case "GET_ALL_DISTRICT":
+      return { ...state, district: action.payload };
+    case "GET_ALL_WARD":
+      return { ...state, ward: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const OrderInfoReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "ORDER_INFO":
+      return { ...state, order: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const getAllOrderReducer = (state = {}, action) => {
   switch (action.type) {
@@ -48,23 +77,6 @@ export const getAllOrderReducer = (state = {}, action) => {
   }
 };
 
-export const addressReducer = (state = {}, action) => {
-  switch (action.type) {
-    case "GET_ALL_PROVINCE": {
-      return { ...state, province: action.payload };
-    }
-
-    case "GET_ALL_DISTRICT":
-      return { ...state, district: action.payload };
-
-    case "GET_ALL_WARD": {
-      return { ...state, ward: action.payload };
-    }
-
-    default:
-      return state;
-  }
-};
 
 export const getOrderByUserReducer = (state = {}, action) => {
   switch (action.type) {
@@ -101,12 +113,3 @@ export const orderPayReducer = (state = {}, action) => {
   }
 };
 
-export const OrderInfoReducer = (state = {}, action) => {
-  switch (action.type) {
-    case "ORDER_INFO":
-      return { ...state, order: action.payload };
-
-    default:
-      return state;
-  }
-};

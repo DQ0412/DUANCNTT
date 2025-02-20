@@ -80,4 +80,10 @@ class ProductController extends Controller
         $products = Product::paginate(10, ['*'], 'page', $page);
         return response()->json($products, 200);
     }
+    public function getProductsByName($name)
+{
+    $products = Product::where('type', $name)->get(); // Assuming the column is 'type' or adjust as necessary
+    return response()->json($products);
+}
+
 }

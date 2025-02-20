@@ -1,93 +1,167 @@
-*{
+* {
     box-sizing: border-box;
 }
-ul{
+
+ul {
     list-style: none;
-    margin: 0 ;
+    margin: 0;
     padding: 0;
 }
-p{
+
+p {
     margin: 0;
 }
-.hotsale-listproduct-product a{
+
+.hotsale-listproduct-product a {
     text-decoration: none;
 }
 
-#hotsale{
+#hotsale {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
 }
 
-.hotsale{
+.hotsale {
     width: 80%;
     margin: auto;
     padding: 1rem 0;
 }
-.hotsale h2{
+
+.hotsale h2 {
     color: #d70018;
     display: flex;
     text-transform: uppercase;
 }
 
-
-
-/*              */
-
-.hotsale-listproduct{
+/* Brand Filter Section */
+.filter {
     display: flex;
-    overflow: hidden;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.brand-filter {
+    margin-top: 20px;
+}
+
+.brand-filter h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.brand-options {
+    display: flex;
     flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.brand-option {
+    text-align: center;
+    width: 80px; /* Adjust this to your desired width */
+    cursor: pointer;
+}
+
+.brand-option img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.brand-option p {
+    font-size: 14px;
+    margin-top: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Price Filter Section */
+.options-price {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.options-price input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150px;
+}
+
+.options-price button {
+    padding: 10px 20px;
+    border: 1px solid #d70018;
+    background-color: #d70018;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.options-price button:hover {
+    background-color: #f64c70;
+}
+
+/* Sale Products Section */
+.hotsale-listproduct {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     margin-top: 1rem;
 }
-.hotsale-listproduct-product{
+
+.hotsale-listproduct-product {
     position: relative;
     width: 20%;
-    height: 100%;
     text-align: center;
     padding: 2rem 1rem;
     border: 1px solid #eee;
+    transition: box-shadow 0.3s ease;
 }
-.hotsale-listproduct-product-name{
-    height: 80px;
-}
-.hotsale-listproduct-product:hover{
-    box-sizing: border-box;
+
+.hotsale-listproduct-product:hover {
     box-shadow: 0px 0px 5px -1px;
-    transition: 0.5s; 
 }
 
 .hotsale-listproduct-product img {
     width: 150px;
     height: 150px;
 }
-.hotsale-listproduct-product:hover img{
+
+.hotsale-listproduct-product:hover img {
     transform: scale(1.05);
-    transition: 0.5s;
+    transition: transform 0.5s ease;
 }
-.hotsale-listproduct-product p{
+
+.hotsale-listproduct-product p {
     padding: 1rem 0;
     font-weight: 700;
     color: #222;
     font-size: 16px;
 }
-.hotsale-listproduct-product .price{
-    display:flex;
+
+.hotsale-listproduct-product .price {
+    display: flex;
     justify-content: space-around;
     line-height: 25px;
 }
-.hotsale-listproduct-product .price1{
+
+.hotsale-listproduct-product .price1 {
     color: #d70018;
     font-weight: 700;
     font-size: 16px;
 }
-.hotsale-listproduct-product .price2{
+
+.hotsale-listproduct-product .price2 {
     text-decoration: line-through;
     font-size: 16px;
     color: gray;
 }
 
-.discount{
+.discount {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -95,127 +169,105 @@ p{
     height: 45px;
     border-radius: 50%;
     background: #d70018;
-
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.discount p{
+
+.discount p {
     color: white;
     margin-bottom: 0;
 }
-.buy{
+
+.buy {
     margin-top: 20px;
 }
-.buy a:hover{
+
+.buy a:hover {
     color: white;
 }
-.buy a{
+
+.buy a {
     padding: 7px 17px;
     border-radius: 4px;
     background: #d70018;
-    
     color: white;
     border: none;
-
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.button, .filter{
-    display: flex;
-}
-.thapdencao, .caodenthap, .filter-type button, .filter-price button{
-    background: #d70018;
-    color: white;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 8px 12px;
-    margin-right: 1rem;
-    position: relative;
-}
-
-.filter{
-    display: flex;
-    flex-direction: column;
-}
-.filter ul{
-    display: flex;
-    flex-wrap: wrap;
-}
-.filter li{
-    padding: 4px 12px;
-    border: 1px solid #eee;
-    cursor: pointer;
-    margin-right: 1rem;
-}
-.filter li:hover{
-    background: #d70018;
-    color: white;
-    transition: .5s
-}
-.options-price{
-    display: flex;
-    margin-top: 1rem;
-}
-.options-price input{
-    border: 1px solid #eee;
-    outline: none;
-}
-.options-price button{
-    border: 1px solid #d70018;
-    outline: none;
-
-    background: #d70018;
-    color: white;
-    padding: 0 1rem;
-}
-#priceStart, #priceEnd{
-    padding: 4px 10px;
-    margin-right: 1rem;
-}
 @media screen and (max-width: 800px) {
-    .hotsale{
+    .hotsale {
         width: 100%;
         padding: 0 .5rem;
     }
-    .hotsale-listproduct-product{
+
+    .hotsale-listproduct-product {
         width: 50%;
     }
-    .filter{
+
+    .filter {
         flex-direction: column;
     }
+
     .filter-type button, .filter-price button {
-        
         padding: .2rem 12px;
-        
     }
-    .options-price{
+
+    .options-price {
         display: flex;
         flex-direction: column;
-        
     }
-    .options-price input{
+
+    .options-price input {
         margin-bottom: 1rem;
     }
-    .options-price button{
+
+    .options-price button {
         padding: .2rem 0;
         max-width: 100px;
     }
 }
 
 @media screen and (max-width: 450px) {
-    .hotsale-listproduct-product{
+    .hotsale-listproduct-product {
         padding: .5rem;
     }
-    .hotsale-listproduct-product img{
+
+    .hotsale-listproduct-product img {
         width: 100px;
         height: 100px;
     }
-    .hotsale-listproduct-product .price1,.hotsale-listproduct-product .price2{
-        display:flex;
+
+    .hotsale-listproduct-product .price1, .hotsale-listproduct-product .price2 {
+        display: flex;
         font-size: 12px;
     }
+}
+
+button {
+    background-color: #f64c70;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d43f60;
+}
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.filter-brands img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 }

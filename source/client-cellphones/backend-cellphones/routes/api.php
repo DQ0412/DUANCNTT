@@ -7,13 +7,20 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TypeProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\OrderController;
 /* 
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
 */
 
+Route::get('/config/paypal', function () {
+    return response()->json([
+        'paypal_client_id' => env('PAYPAL_CLIENT_ID'),
+    ]);
+});
+// In routes/api.php
+Route::get('products/{name}', [ProductController::class, 'getProductsByName']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/cart', [CartController::class, 'getCart']);  // Lấy giỏ hàng
@@ -25,12 +32,12 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 //Route::post('/cart/add', [CartController::class, 'addToCart']);
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/order', [OrderController::class, 'getAllOrders']); // ✅ Lấy tất cả đơn hàng
-    Route::post('/order/create', [OrderController::class, 'createOrder']); // ✅ Tạo đơn hàng
+    Route::get('/orders', [OrderController::class, 'getAllOrders']); // ✅ Lấy tất cả đơn hàng
+    Route::post('/orders', [OrderController::class, 'createOrder']);
     Route::put('/order/update/{id}', [OrderController::class, 'updateOrder']); // ✅ Cập nhật đơn hàng
     Route::delete('/order/delete/{id}', [OrderController::class, 'deleteOrder']); // ✅ Xóa đơn hàng
 });
-
+//Route::post('/orders', [OrderController::class, 'createOrder']);
 Route::post('user/register', [AuthController::class, 'register']);
 Route::post('user/login', [AuthController::class, 'login']);
 Route::post('user/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');

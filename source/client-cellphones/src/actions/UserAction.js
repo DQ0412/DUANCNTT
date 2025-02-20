@@ -5,33 +5,54 @@ const BASE_URL = "http://127.0.0.1:8000/api";
 export const login = (userData) => async (dispatch) => {
   try {
     dispatch({ type: 'USER_LOGIN_REQUEST' }); // Bắt đầu loading
+
+    // Gửi yêu cầu đăng nhập
     const { data } = await axios.post(`${BASE_URL}/user/login`, userData, {
       headers: {
         'Content-Type': 'application/json'
       }
     });
-    //dispatch({ type: 'USER_LOGIN_SUCCESS', payload: data });
-    //localStorage.setItem("userInfo", JSON.stringify(data.user));
+
+    // Kiểm tra dữ liệu trả về từ API
     if (!data || !data.user || !data.token) {
+      console.error("❌ API không trả về dữ liệu hợp lệ:", data);
       throw new Error("API không trả về dữ liệu hợp lệ!");
     }
+
+    // Log token để kiểm tra
+    console.log("🔑 Token nhận được:", data.token);
+
+    // Xóa dữ liệu cũ trong localStorage
     localStorage.removeItem("userInfo");
 
-    //  Lưu user và token vào Redux
+    // Lưu user và token vào Redux
     dispatch({ type: "USER_LOGIN_SUCCESS", payload: data });
 
-    //  Lưu vào localStorage để giữ trạng thái đăng nhập
+    // Lưu vào localStorage
     localStorage.setItem("userInfo", JSON.stringify({
-      ...data.user, 
+      ...data.user,
       token: data.token
     }));
+
+    // Kiểm tra lại sau khi lưu
+    const savedUserInfo = localStorage.getItem("userInfo");
+    if (!savedUserInfo) {
+      console.error("❌ Không lưu được userInfo vào localStorage");
+      throw new Error("Không thể lưu dữ liệu đăng nhập! Vui lòng thử lại.");
+    } else {
+      console.log("✅ userInfo đã được lưu:", JSON.parse(savedUserInfo));
+    }
+
   } catch (error) {
+    // Log lỗi và dispatch
+    console.error("❌ Đăng nhập thất bại:", error.response?.data || error.message);
     dispatch({
       type: 'USER_LOGIN_FAIL',
       payload: error.response?.data?.message || "Đăng nhập thất bại",
     });
   }
 };
+
 
 export const SignupUser = (user) => async (dispatch) => {
   try {

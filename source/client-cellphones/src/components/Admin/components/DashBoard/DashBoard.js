@@ -19,17 +19,17 @@ export default function DashBoard() {
             <form>
               <input placeholder="Search ..."></input>
               <span>
-                <SearchOutlined></SearchOutlined>
+                <SearchOutlined />
               </span>
             </form>
           </div>
           <div className="dashboard-top-content">
             <li className="dashboard-top-content-avatar">
-              <img src="https://res.cloudinary.com/caokhahieu/image/upload/v1626334932/gediogbkwlg85kbbsamq.jpg"></img>
-              <span>Cao Kha Hieu</span>
+              <img src="https://res.cloudinary.com/caokhahieu/image/upload/v1626334932/gediogbkwlg85kbbsamq.jpg" alt="avatar" />
+              <span>ADMIN</span>
             </li>
             <li className="dashboard-top-content-bell">
-              <BellOutlined></BellOutlined>
+              <BellOutlined />
             </li>
           </div>
         </div>
@@ -39,7 +39,7 @@ export default function DashBoard() {
             <div className="dashboard-middle-statistic-content">
               <li>
                 <div className="dashboard-middle-statistic-icon">
-                  <ShoppingOutlined></ShoppingOutlined>
+                  <ShoppingOutlined />
                 </div>
                 <div className="dashboard-middle-statistic-title">
                   <span className="total">1666</span>
@@ -50,10 +50,10 @@ export default function DashBoard() {
             <div className="dashboard-middle-statistic-content">
               <li>
                 <div className="dashboard-middle-statistic-icon">
-                  <ShoppingCartOutlined></ShoppingCartOutlined>
+                  <ShoppingCartOutlined />
                 </div>
                 <div className="dashboard-middle-statistic-title">
-                  <span className="total">25</span>
+                  <span className="total">10</span>
                   <span className="title">Daily Visits</span>
                 </div>
               </li>
@@ -61,10 +61,10 @@ export default function DashBoard() {
             <div className="dashboard-middle-statistic-content">
               <li>
                 <div className="dashboard-middle-statistic-icon">
-                  <DollarCircleOutlined></DollarCircleOutlined>
+                  <DollarCircleOutlined />
                 </div>
                 <div className="dashboard-middle-statistic-title">
-                  <span className="total">2000</span>
+                  <span className="total">387</span>
                   <span className="title">Total Income</span>
                 </div>
               </li>
@@ -72,21 +72,16 @@ export default function DashBoard() {
             <div className="dashboard-middle-statistic-content">
               <li>
                 <div className="dashboard-middle-statistic-icon">
-                  <FileTextOutlined></FileTextOutlined>
+                  <FileTextOutlined />
                 </div>
                 <div className="dashboard-middle-statistic-title">
-                  <span className="total">1208</span>
+                  <span className="total">34</span>
                   <span className="title">Total Orders</span>
                 </div>
               </li>
             </div>
           </div>
-          <ChartDashBoard></ChartDashBoard>
-        </div>
-
-        <div className="dashboard-new">
-          <div className="dashboard"></div>
-          <div className="dashboard"></div>
+          <ChartDashBoard />
         </div>
       </div>
     </section>
