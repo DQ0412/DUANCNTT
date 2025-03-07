@@ -1,0 +1,114 @@
+/* Đặt lại một số style mặc định */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #footer {
+    width: 100%;
+    background: #fff; /* Nền trắng hoặc tuỳ chọn */
+    padding: 2rem 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer {
+    width: 80%;
+    margin: auto;
+    color: #333;
+  }
+  
+  /* Khu vực top: chia 4 cột */
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2rem;
+  }
+  
+  .footer-col {
+    flex: 1; /* Mỗi cột chiếm khoảng 1 phần */
+    min-width: 200px; /* Chiều rộng tối thiểu cho mỗi cột */
+  }
+  
+  .footer-col h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #d70018; /* Màu đỏ */
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .footer-col ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-col ul li a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-col ul li a:hover {
+    color: #d70018;
+  }
+  
+  /* Tiêu đề nhỏ */
+  .footer-col h5 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  /* Thanh toán */
+  .payment-methods img {
+    width: 50px;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* Link tải app */
+  .app-links img {
+    width: 120px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Khu vực bottom */
+  .footer-bot {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  
+  .footer-bot p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  /* Responsive cho màn hình nhỏ */
+  @media screen and (max-width: 768px) {
+    .footer {
+      width: 90%;
+    }
+    .footer-top {
+      gap: 1.5rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .footer-col h4 {
+      font-size: 1rem;
+    }
+    .footer-col ul li a {
+      font-size: 0.9rem;
+    }
+  }
+  

@@ -1,0 +1,97 @@
+/* Reset cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container chính */
+  #myorder{
+    /* Bạn có thể thêm style nếu cần */
+  }
+  
+  .myorder {
+    max-width: 800px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  /* Menu đơn hàng */
+  .myorder-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .myorder-menu-item {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    flex: 1 1 calc(25% - 1rem);
+    background: #fff;
+    border: 1px solid #d70018;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .myorder-menu-item.active,
+  .myorder-menu-item:hover {
+    background: #d70018;
+  }
+  
+  .myorder-menu-item a {
+    padding: 0 1rem;
+    color: #d70018;
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s ease;
+  }
+  
+  .myorder-menu-item.active a,
+  .myorder-menu-item:hover a {
+    color: #fff;
+  }
+  
+  /* Thông báo số lượng đơn hàng */
+  .myorder-menu-item-newPendding,
+  .myorder-menu-item-newShipping {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background: #d70018;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Responsive cho màn hình nhỏ */
+  @media screen and (max-width: 500px) {
+    .myorder {
+      width: 100%;
+    }
+    .myorder-menu {
+      gap: 0.5rem;
+    }
+    .myorder-menu-item {
+      flex: 1 1 calc(48% - 1rem);
+      height: 35px;
+      line-height: 35px;
+    }
+    .myorder-menu-item a {
+      font-size: 0.9rem;
+    }
+  }
+  

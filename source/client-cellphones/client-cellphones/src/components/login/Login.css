@@ -1,0 +1,95 @@
+/* 📌 Căn giữa toàn bộ trang đăng nhập */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f8f8f8;
+  }
+  
+  /* 📌 Container chứa form */
+  .login-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+  }
+  
+  /* 📌 Tiêu đề */
+  .login-title {
+    font-size: 24px;
+    color: #d70018;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  /* 📌 Ô nhập liệu */
+  .input-group {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .input-group input:focus {
+    border-color: #d70018;
+    box-shadow: 0px 0px 5px rgba(215, 0, 24, 0.3);
+  }
+  
+  /* 📌 Nút đăng nhập */
+  .login-button {
+    background: #d70018;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .login-button:hover {
+    background: #b30012;
+  }
+  
+  /* 📌 Hiển thị lỗi */
+  .error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* 📌 Link đăng ký */
+  .signup-link {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .signup-link a {
+    color: #d70018;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .login-container {
+      width: 90%;
+      padding: 1.5rem;
+    }
+  }
+  

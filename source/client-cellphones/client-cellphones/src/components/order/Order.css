@@ -1,0 +1,334 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.order-content {
+  max-width: 600px;
+  width: 100%;
+  background: #f8f8f8;
+  position: relative;
+  left: 30%;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.order-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h4 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.customer, .address, .choose-pay {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.form-customer, .choose {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.order-page input, textarea {
+  width: 100%;
+  outline: none;
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+  margin: 1rem 0;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+/* CSS cho dropdown tỉnh/thành phố */
+.province {
+  position: relative;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.province button {
+  width: 100%;
+  padding: 1rem;
+  background: #fff;
+  color: #288ad6;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.province button::after {
+  content: "▼";
+  font-size: 12px;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Hiển thị dropdown */
+.select {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: white;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  max-height: 250px;
+  overflow-y: auto;
+  display: none;
+}
+
+/* Khi dropdown mở ra */
+.select.show {
+  display: block;
+}
+
+/* Danh sách lựa chọn */
+.select-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+.select-list span {
+  padding: 0.8rem;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+
+.select-list span:last-child {
+  border-bottom: none;
+}
+
+.select-list span:hover {
+  background: #5897fb;
+  color: white;
+}
+
+/* Nút đặt hàng */
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 16px;
+  background-color: #e11b1e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #c41818;
+}
+
+button[type="submit"]:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Loading text styling */
+button[type="submit"].loading {
+  background-color: #f0ad4e;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+button[type="submit"].loading::after {
+  content: " Đang xử lý...";
+  display: inline-block;
+  margin-left: 10px;
+  animation: spin 1s infinite linear;
+}
+
+/* Hiệu ứng quay khi loading */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Đáp ứng cho mobile */
+@media screen and (max-width: 400px) {
+  .order-content {
+      width: 100%;
+      padding: 1rem;
+      box-shadow: none;
+  }
+
+  .order-page input, .order-page textarea {
+      font-size: 14px;
+  }
+
+  .choose-pay button, .customer-order button {
+      font-size: 14px;
+      padding: 0.8rem;
+  }
+}
+.dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown button {
+  width: 100%;
+  padding: 1rem;
+  background: #fff;
+  color: #288ad6;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.dropdown-list span {
+  display: block;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-list span:hover {
+  background: #5897fb;
+  color: white;
+}
+.choose-pay {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.choose button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.choose .active {
+  background-color: #4CAF50;
+  color: white;
+}
+/* Cải thiện diện mạo của các phần tử trong form */
+#order {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.order-content {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.order-page h4 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.form-customer input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.address-form .dropdown {
+    margin-bottom: 15px;
+}
+
+.address-form button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 14px;
+    text-align: left;
+}
+
+.address-form input {
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.payment-section {
+    margin-top: 30px;
+}
+
+.choose-pay h4 {
+    margin-bottom: 15px;
+}
+
+.choose-pay .choose button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.choose-pay .choose .active {
+    background-color: #007bff;
+    color: white;
+}
+
+button[type="submit"] {
+    background-color: #f44336;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:disabled {
+    background-color: #bbb;
+}
